@@ -1,14 +1,43 @@
 {
-  "name": "react-tree-vis",
-  "version": "0.0.1",
-  "description": "React interactive tree visualization library.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Vandan Rogheliya",
-  "license": "MIT",
-  "devDependencies": {
-    "typescript": "^4.2.4"
-  }
+	"name": "react-tree-vis",
+	"version": "0.0.1",
+	"description": "React interactive tree visualization library.",
+	"main": "./build/index.js",
+	"module": "./build/index.es.js",
+	"scripts": {
+		"build": "rollup -c",
+		"storybook": "start-storybook -p 6006",
+		"build-storybook": "build-storybook",
+		"lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix"
+	},
+	"author": "Vandan Rogheliya",
+	"license": "MIT",
+	"peerDependencies": {
+		"react": "16.13.1",
+		"react-dom": "16.13.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.14.2",
+		"@rollup/plugin-commonjs": "^19.0.0",
+		"@rollup/plugin-node-resolve": "^13.0.0",
+		"@storybook/addon-actions": "^6.2.9",
+		"@storybook/addon-essentials": "^6.2.9",
+		"@storybook/addon-links": "^6.2.9",
+		"@storybook/react": "^6.2.9",
+		"@typescript-eslint/eslint-plugin": "^4.23.0",
+		"@typescript-eslint/parser": "^4.23.0",
+		"babel-loader": "^8.2.2",
+		"eslint": "^7.26.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-prettier": "^3.4.0",
+		"eslint-plugin-react": "^7.23.2",
+		"prettier": "^2.3.0",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"rollup": "^2.48.0",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"rollup-plugin-typescript2": "^0.30.0",
+		"typescript": "^4.2.4"
+	},
+	"dependencies": {}
 }
