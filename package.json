@@ -39,5 +39,7 @@
 		"rollup-plugin-typescript2": "^0.30.0",
 		"typescript": "^4.2.4"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"@storybook/addon-console": "^1.2.3"
+	}
 }

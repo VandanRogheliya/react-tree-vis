@@ -1,0 +1,124 @@
+.tree ul {
+  padding: 0;
+  padding-top: 20px;
+  position: relative;
+  transition: all 0.5s;
+}
+.tree > ul {
+  display: table;
+  margin: 0 auto;
+}
+.tree li {
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 10px 1px 0 1px;
+  transition: all 0.5s;
+}
+/* Line Styles starts*/
+.tree li::before,
+.tree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px solid #ccc;
+  width: 50%;
+  height: 10px;
+  transition: all 0.5s;
+}
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid #ccc;
+}
+.tree li:last-child::before {
+  border-right: 1px solid #ccc;
+  border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after {
+  border-radius: 5px 0 0 0;
+}
+.tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 1px solid #ccc;
+  width: 0;
+  height: 20px;
+  transition: all 0.5s;
+}
+.tree li:only-child::after,
+.tree li:only-child::before {
+  display: none;
+}
+.tree li:only-child {
+  padding-top: 0;
+}
+.tree li:first-child::before,
+.tree li:last-child::after {
+  border: 0 none;
+}
+/* Node Styles starts*/
+.tree li div {
+  padding: 6px 12px;
+  text-decoration: none;
+  color: #666;
+  font-family: arial, verdana, tahoma;
+  font-size: 20px;
+  display: inline-block;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  text-shadow: none;
+  border-radius: 200px;
+  transition: all 0.5s;
+}
+.tree li div.end {
+  color: #c20000;
+}
+.tree li div.red {
+  background-color: rgba(218, 96, 96, 0.5);
+  text-shadow: none;
+}
+.tree li div.black {
+  background-color: rgba(172, 172, 172, 0.5);
+  text-shadow: none;
+}
+.tree li div.highlight {
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ff15, 0 0 20px #00ff15,
+    0 0 25px #00ff15, 0 0 30px #00ff15, 0 0 35px #00ff15;
+}
+.tree li div.highlight.red {
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f00, 0 0 20px #f00,
+    0 0 25px #f00, 0 0 30px #f00, 0 0 35px #f00;
+}
+.tree li div.highlight.black {
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #000, 0 0 20px #000,
+    0 0 25px #000, 0 0 30px #000, 0 0 35px #000;
+}
+/* Hover Styles starts */
+.tree li div:hover,
+.tree li div:hover + ul li div.normal {
+  color: #002574;
+  box-shadow: -1px -1px 5px #fff, 1px 1px 5px #babecc;
+}
+.tree li div:hover + ul li::after,
+.tree li div:hover + ul li::before,
+.tree li div:hover + ul::before,
+.tree li div:hover + ul ul::before {
+  border-color: #5f6674;
+}
+li.null div {
+  color: rgba(124, 124, 124, 0.185);
+}
+.tree li.null div:hover,
+.tree li.null div:hover + ul li div {
+  color: rgba(255, 0, 0, 0.726);
+}
+.height {
+  font-size: 13px;
+}
