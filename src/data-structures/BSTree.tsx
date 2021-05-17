@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 export class Node {
   value: number
   left: Node
@@ -36,22 +36,21 @@ export class Node {
     )
   }
 
-  //Inserts a node in HTML
+  //Inserts a node in JSX
   insert(node: Node, isLeft: boolean): void {
-    const newHtml = node.currentJSX
+    const newJSX = node.currentJSX
 
     if (isLeft) {
-      this.leftJSX = newHtml
+      this.leftJSX = newJSX
     } else {
-      this.rightJSX = newHtml
+      this.rightJSX = newJSX
     }
-    this.setHtml()
-    this.updateRootHtml()
+    this.setJSX()
+    this.updateRootJSX()
   }
 
-  //Updates HTML for the node
-  // TODO: Rename
-  setHtml(): void {
+  //Updates JSX for the node
+  setJSX(): void {
     this.currentJSX = (
       <li>
         <div className="normal">{this.value}</div>
@@ -62,9 +61,8 @@ export class Node {
     )
   }
 
-  //Updates the whole HTML
-  // TODO: Rename
-  updateRootHtml(): void {
+  //Updates the whole JSX
+  updateRootJSX(): void {
     if (this.parent !== null) {
       if (this.parent.left === this) this.parent.insert(this, true)
       else this.parent.insert(this, false)
@@ -86,8 +84,8 @@ export class Node {
         </li>
       )
     }
-    this.setHtml()
-    this.updateRootHtml()
+    this.setJSX()
+    this.updateRootJSX()
   }
 
   //Sets grandchild to child
@@ -95,25 +93,25 @@ export class Node {
     if (isLeftChild) {
       if (isLeft) {
         this.leftJSX = this.left.left.currentJSX
-        this.setHtml()
+        this.setJSX()
       } else {
         this.leftJSX = this.left.right.currentJSX
-        this.setHtml()
+        this.setJSX()
       }
     } else {
       if (isLeft) {
         this.rightJSX = this.right.left.currentJSX
-        this.setHtml()
+        this.setJSX()
       } else {
         this.rightJSX = this.right.right.currentJSX
 
-        this.setHtml()
+        this.setJSX()
       }
     }
-    this.updateRootHtml()
+    this.updateRootJSX()
   }
 
-  //Removes a node from HTML
+  //Removes a node from JSX
   remove(childrenCondtion: string): void {
     if (!this.parent) return
     if (!childrenCondtion) {
@@ -122,7 +120,7 @@ export class Node {
       } else {
         this.parent.setChildToNull(false)
       }
-    } else if (childrenCondtion === "left") {
+    } else if (childrenCondtion === 'left') {
       if (this.parent.left === this) {
         this.parent.setChildToChildsChild(true, true)
       } else {
@@ -140,8 +138,8 @@ export class Node {
   //Updates the value of a node
   updateValue(value: number): void {
     this.value = value
-    this.setHtml()
-    this.updateRootHtml()
+    this.setJSX()
+    this.updateRootJSX()
   }
 
   //Adds highlight to a node when searched
@@ -155,18 +153,18 @@ export class Node {
       </li>
     )
 
-    this.updateRootHtml()
+    this.updateRootJSX()
   }
 
   //Removes the highlight
   clearHighlight(): void {
-    this.setHtml()
+    this.setJSX()
 
-    this.updateRootHtml()
+    this.updateRootJSX()
   }
 
-  //Changes the html when tree is balanced
-  balanceHtml(): void {
+  //Changes the JSX when tree is balanced
+  balanceJSX(): void {
     if (!this.left && this.right) {
       this.rightJSX = this.right.currentJSX
       this.setChildToNull(true)
@@ -176,8 +174,8 @@ export class Node {
     } else if (this.right && this.left) {
       this.leftJSX = this.left.currentJSX
       this.rightJSX = this.right.currentJSX
-      this.setHtml()
-      this.updateRootHtml()
+      this.setJSX()
+      this.updateRootJSX()
     } else {
       this.leftJSX = (
         <li className="null">
@@ -190,15 +188,15 @@ export class Node {
           <div className="null">null</div>
         </li>
       )
-      this.setHtml()
-      this.updateRootHtml()
+      this.setJSX()
+      this.updateRootJSX()
     }
   }
 }
 
 class BST {
   root: Node
-  highlighted: Node //TODO: rename to highlighted node
+  highlightedNode: Node //TODO: rename to highlighted node
   leafDepth: number
 
   constructor(num = 0) {
@@ -206,7 +204,7 @@ class BST {
     if (num) {
       this.generateRandomBST(num)
     }
-    this.highlighted = null
+    this.highlightedNode = null
     this.leafDepth = -1
   }
 
@@ -277,12 +275,12 @@ class BST {
         return node
       }
       if (node.left === null) {
-        node.remove("right")
+        node.remove('right')
         node.right.parent = node.parent
         node = node.right
         return node
       } else if (node.right === null) {
-        node.remove("left")
+        node.remove('left')
         node.left.parent = node.parent
         node = node.left
         return node
@@ -342,7 +340,7 @@ class BST {
     if (node === null) return false
     else if (node.value === value) {
       node.addHighlight()
-      this.highlighted = node
+      this.highlightedNode = node
       return true
     } else if (node.value > value) return this.search(value, node.left)
     else return this.search(value, node.right)
@@ -368,16 +366,16 @@ class BST {
   checkBST(): string[] {
     const BSTTypeList: string[] = []
     if (this.isBalanced()) {
-      BSTTypeList.push("Balanced")
+      BSTTypeList.push('Balanced')
     }
     if (this.isComplete()) {
-      BSTTypeList.push("Complete")
+      BSTTypeList.push('Complete')
     }
     if (this.isPerfect()) {
-      BSTTypeList.push("Perfect")
+      BSTTypeList.push('Perfect')
     }
     if (this.isFull()) {
-      BSTTypeList.push("Full")
+      BSTTypeList.push('Full')
     }
     return BSTTypeList
   }
@@ -472,9 +470,9 @@ class BST {
   }
 
   clearHighlight(): void {
-    if (this.highlighted) {
-      this.highlighted.clearHighlight()
-      this.highlighted = null
+    if (this.highlightedNode) {
+      this.highlightedNode.clearHighlight()
+      this.highlightedNode = null
     }
   }
 }
