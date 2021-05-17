@@ -1,4 +1,9 @@
 import React from 'react'
+import { BINARY_TREE_TYPE } from '../constants'
+import { BinaryTreeCheckType } from '../types'
+
+const LEFT = 'left'
+const RIGHT = 'right'
 export class Node {
   value: number
   left: Node
@@ -120,7 +125,7 @@ export class Node {
       } else {
         this.parent.setChildToNull(false)
       }
-    } else if (childrenCondtion === 'left') {
+    } else if (childrenCondtion === LEFT) {
       if (this.parent.left === this) {
         this.parent.setChildToChildsChild(true, true)
       } else {
@@ -196,7 +201,7 @@ export class Node {
 
 class BST {
   root: Node
-  highlightedNode: Node //TODO: rename to highlighted node
+  highlightedNode: Node
   leafDepth: number
 
   constructor(num = 0) {
@@ -275,12 +280,12 @@ class BST {
         return node
       }
       if (node.left === null) {
-        node.remove('right')
+        node.remove(RIGHT)
         node.right.parent = node.parent
         node = node.right
         return node
       } else if (node.right === null) {
-        node.remove('left')
+        node.remove(LEFT)
         node.left.parent = node.parent
         node = node.left
         return node
@@ -363,19 +368,20 @@ class BST {
 
   //BST Checker
   //Main Checker function
-  checkBST(): string[] {
-    const BSTTypeList: string[] = []
+  checkBST(): BinaryTreeCheckType[] {
+    const { BALANCED, COMPLETE, FULL, PERFECT } = BINARY_TREE_TYPE
+    const BSTTypeList: BinaryTreeCheckType[] = []
     if (this.isBalanced()) {
-      BSTTypeList.push('Balanced')
+      BSTTypeList.push(BALANCED)
     }
     if (this.isComplete()) {
-      BSTTypeList.push('Complete')
+      BSTTypeList.push(COMPLETE)
     }
     if (this.isPerfect()) {
-      BSTTypeList.push('Perfect')
+      BSTTypeList.push(FULL)
     }
     if (this.isFull()) {
-      BSTTypeList.push('Full')
+      BSTTypeList.push(PERFECT)
     }
     return BSTTypeList
   }
@@ -439,6 +445,7 @@ class BST {
   }
 
   //Balancing BST
+  // TODO: improve the algorithm, it does not work for repeated values
   balance(node = this.root): void {
     this.clearHighlight()
     const nodes: Node[] = []

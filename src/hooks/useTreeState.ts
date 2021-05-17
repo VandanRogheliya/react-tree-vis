@@ -15,7 +15,7 @@ const useTreeState = (treeObject: TreeType): ReturnType => {
   )
   const setTree = (newTreeObject: TreeType) => {
     setTreeInternal(newTreeObject)
-    setTreeJSX(newTreeObject.root.currentJSX)
+    setTreeJSX(newTreeObject?.root?.currentJSX)
   }
   return { tree, treeJSX, setTree }
 }
