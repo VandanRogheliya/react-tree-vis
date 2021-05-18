@@ -13,7 +13,7 @@ type BSTProps = {
 }
 
 const BinarySearchTree: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
-  {}: BSTProps,
+  { data }: BSTProps,
   ref: React.MutableRefObject<any>,
 ) => {
   const { tree, treeJSX, setTree } = useTreeState(null)
@@ -66,10 +66,15 @@ const BinarySearchTree: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
     },
   }))
 
-  useEffect(() => {
-    const newTree = new BST(3)
+  const handleData = () => {
+    const newTree = new BST()
+    data.forEach((elem) => newTree.insert(elem))
     setTree(newTree)
-  }, [])
+  }
+
+  useEffect(() => {
+    if (data) handleData()
+  }, [data])
 
   return (
     <div className="tree" ref={ref}>

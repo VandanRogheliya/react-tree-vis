@@ -30,6 +30,8 @@ export const Primary: Story = () => {
   const [data, setData] = useState([])
   const [treeType, setTreeType] = useState([])
 
+  const [defaultData, setDefaultData] = useState([1, 2, 3])
+
   return (
     <>
       <div>
@@ -91,8 +93,16 @@ export const Primary: Story = () => {
             (e, index) => `${e},${index !== treeType.length - 1 ? ' ' : ''}`,
           )}
         </span>
+        <br />
+        <button
+          onClick={() =>
+            setDefaultData([...defaultData, defaultData.length + 1])
+          }
+        >
+          Append element to data
+        </button>
       </div>
-      <BinarySearchTree ref={ref} />
+      <BinarySearchTree ref={ref} data={defaultData} />
     </>
   )
 }
