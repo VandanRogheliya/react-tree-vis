@@ -74,10 +74,17 @@ const BinarySearchTree: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
 
   useEffect(() => {
     if (data) handleData()
+    document.getElementById('tree').style.setProperty('--border-color', '#f88') // TODO: integrate css variables
+    // window
+    //   .getComputedStyle(document.getElementById('tree'))
+    //   .getPropertyValue('--border-color')
+    // console.log(
+    //   ,
+    // )
   }, [data])
 
   return (
-    <div className="tree" ref={ref}>
+    <div id="tree" className="tree" ref={ref}>
       <ul>{treeJSX}</ul>
     </div>
   )

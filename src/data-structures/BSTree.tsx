@@ -4,6 +4,27 @@ import { BinaryTreeCheckType } from '../types'
 
 const LEFT = 'left'
 const RIGHT = 'right'
+
+const NULL_NODE_JSX = (
+  <li className="null">
+    <div>null</div>
+  </li>
+)
+
+const getNormalNodeJSX = (
+  value: number,
+  leftJSX: JSX.Element,
+  rightJSX: JSX.Element,
+  isHighlighted = false,
+) => (
+  <li key={value}>
+    <div className={`normal ${isHighlighted ? 'highlight' : ''}`}>{value}</div>
+    <ul>
+      {leftJSX} {rightJSX}
+    </ul>
+  </li>
+)
+
 export class Node {
   value: number
   left: Node
@@ -18,27 +39,9 @@ export class Node {
     this.left = null
     this.right = null
     this.parent = null
-
-    this.leftJSX = (
-      <li className="null">
-        <div>null</div>
-      </li>
-    )
-
-    this.rightJSX = (
-      <li className="null">
-        <div className="null">null</div>
-      </li>
-    )
-
-    this.currentJSX = (
-      <li key={this.value}>
-        <div className="normal">{this.value}</div>
-        <ul>
-          {this.leftJSX} {this.rightJSX}
-        </ul>
-      </li>
-    )
+    this.leftJSX = NULL_NODE_JSX
+    this.rightJSX = NULL_NODE_JSX
+    this.currentJSX = getNormalNodeJSX(this.value, this.leftJSX, this.rightJSX)
   }
 
   //Inserts a node in JSX
@@ -56,14 +59,7 @@ export class Node {
 
   //Updates JSX for the node
   setJSX(): void {
-    this.currentJSX = (
-      <li>
-        <div className="normal">{this.value}</div>
-        <ul>
-          {this.leftJSX} {this.rightJSX}
-        </ul>
-      </li>
-    )
+    this.currentJSX = getNormalNodeJSX(this.value, this.leftJSX, this.rightJSX)
   }
 
   //Updates the whole JSX
@@ -76,19 +72,8 @@ export class Node {
 
   //Sets one child to null
   setChildToNull(isLeft: boolean): void {
-    if (isLeft) {
-      this.leftJSX = (
-        <li className="null">
-          <div>null</div>
-        </li>
-      )
-    } else {
-      this.rightJSX = (
-        <li className="null">
-          <div>null</div>
-        </li>
-      )
-    }
+    if (isLeft) this.leftJSX = NULL_NODE_JSX
+    else this.rightJSX = NULL_NODE_JSX
     this.setJSX()
     this.updateRootJSX()
   }
@@ -149,15 +134,12 @@ export class Node {
 
   //Adds highlight to a node when searched
   addHighlight(): void {
-    this.currentJSX = (
-      <li key={this.value}>
-        <div className="normal highlight">{this.value}</div>
-        <ul>
-          {this.leftJSX} {this.rightJSX}
-        </ul>
-      </li>
+    this.currentJSX = getNormalNodeJSX(
+      this.value,
+      this.leftJSX,
+      this.rightJSX,
+      true,
     )
-
     this.updateRootJSX()
   }
 
@@ -182,17 +164,8 @@ export class Node {
       this.setJSX()
       this.updateRootJSX()
     } else {
-      this.leftJSX = (
-        <li className="null">
-          <div>null</div>
-        </li>
-      )
-
-      this.rightJSX = (
-        <li className="null">
-          <div className="null">null</div>
-        </li>
-      )
+      this.leftJSX = NULL_NODE_JSX
+      this.rightJSX = NULL_NODE_JSX
       this.setJSX()
       this.updateRootJSX()
     }
