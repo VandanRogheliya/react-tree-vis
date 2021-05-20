@@ -17,3 +17,23 @@ export type BinaryTreeCheckType =
   | typeof COMPLETE
   | typeof FULL
   | typeof PERFECT
+
+export type TreeStylesType = {
+  lineColor?: string
+  lineHoverColor?: string
+  lineRadius?: string
+  nodeBorderRadius?: string
+  nodeBackgroundColor?: string
+  nodeFontColor?: string
+  nodeShadow?: string
+  nodeTextShadow?: string
+  nodeHighlightBackgroundColor?: string
+  nodeHighlightFontColor?: string
+  nodeHighlightShadow?: string
+  nodeHighlightTextShadow?: string
+  nodeHoverBackgroundColor?: string
+  nodeHoverFontColor?: string
+  nodeHoverShadow?: string
+  nodeHoverTextShadow?: string
+  transitionDuration?: string
+}

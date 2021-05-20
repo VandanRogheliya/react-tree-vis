@@ -1,128 +1,175 @@
-#tree {
-  /* --border-style: 1px solid #ccc; */
-  --border-color: #ccc;
+#react-tree-vis {
+  --line-color: #ccc;
+  --line-hover-color: #5f6674;
+  --line-radius: 5px;
+
+  --node-border-radius: 200px;
+  --node-bg-color: #fff;
+  --node-font-color: #666;
+  --node-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  --node-text-shadow: none;
+
+  /* highlighted node */
+  --node-hl-bg-color: #fff;
+  --node-hl-font-color: #fff;
+  --node-hl-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  --node-hl-text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ff15,
+    0 0 20px #00ff15, 0 0 25px #00ff15, 0 0 30px #00ff15, 0 0 35px #00ff15;
+
+  --node-hover-bg-color: #fff;
+  --node-hover-font-color: #002574;
+  --node-hover-shadow: -1px -1px 5px #fff, 1px 1px 5px #babecc;
+  --node-hover-text-shadow: none;
+
+  --transition: 0.5s;
 }
-#tree ul {
+
+#react-tree-vis ul {
   padding: 0;
   padding-top: 20px;
   position: relative;
-  transition: all 0.5s;
+  transition: all var(--transition);
 }
-#tree > ul {
+
+#react-tree-vis > ul {
   width: fit-content;
   margin: 0 auto;
 }
-#tree li {
+
+#react-tree-vis li {
   float: left;
   text-align: center;
   list-style-type: none;
   position: relative;
   padding: 10px 1px 0 1px;
-  transition: all 0.5s;
+  transition: all var(--transition);
 }
-/* Line Styles starts*/
-#tree li::before,
-#tree li::after {
+
+/* Line Styles */
+#react-tree-vis li::before,
+#react-tree-vis li::after {
   content: '';
   position: absolute;
   top: 0;
   right: 50%;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--line-color);
   width: 50%;
   height: 10px;
-  transition: all 0.5s;
+  transition: all var(--transition);
 }
-#tree li::after {
+
+#react-tree-vis li::after {
   right: auto;
   left: 50%;
-  border-left: 1px solid var(--border-color);
+  border-left: 1px solid var(--line-color);
 }
-#tree li:last-child::before {
-  border-right: 1px solid var(--border-color);
-  border-radius: 0 5px 0 0;
+
+#react-tree-vis li:last-child::before {
+  border-right: 1px solid var(--line-color);
+  border-radius: 0 var(--line-radius) 0 0;
 }
-#tree li:first-child::after {
-  border-radius: 5px 0 0 0;
+
+#react-tree-vis li:first-child::after {
+  border-radius: var(--line-radius) 0 0 0;
 }
-#tree ul ul::before {
+
+#react-tree-vis ul ul::before {
   content: '';
   position: absolute;
   top: 0;
   left: 50%;
-  border-left: 1px solid var(--border-color);
+  border-left: 1px solid var(--line-color);
   width: 0;
   height: 20px;
-  transition: all 0.5s;
+  transition: all var(--transition);
 }
-#tree li:only-child::after,
-#tree li:only-child::before {
+
+#react-tree-vis li:only-child::after,
+#react-tree-vis li:only-child::before {
   display: none;
 }
-#tree li:only-child {
+
+#react-tree-vis li:only-child {
   padding-top: 0;
 }
-#tree li:first-child::before,
-#tree li:last-child::after {
+
+#react-tree-vis li:first-child::before,
+#react-tree-vis li:last-child::after {
   border: 0 none;
 }
-/* Node Styles starts*/
-#tree li div {
+
+/* Node Styles starts */
+#react-tree-vis li div {
   padding: 6px 12px;
   text-decoration: none;
-  color: #666;
+  color: var(--node-font-color);
   font-family: arial, verdana, tahoma;
   font-size: 20px;
   display: inline-block;
-  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
-  text-shadow: none;
-  border-radius: 200px;
-  transition: all 0.5s;
+  box-shadow: var(--node-shadow);
+  text-shadow: var(--node-text-shadow);
+  border-radius: var(--node-border-radius);
+  background-color: var(--node-bg-color);
+  transition: all var(--transition);
 }
-#tree li div.end {
+
+#react-tree-vis li div.end {
   color: #c20000;
 }
-#tree li div.red {
+
+#react-tree-vis li div.red {
   background-color: rgba(218, 96, 96, 0.5);
   text-shadow: none;
 }
-#tree li div.black {
+
+#react-tree-vis li div.black {
   background-color: rgba(172, 172, 172, 0.5);
   text-shadow: none;
 }
-#tree li div.highlight {
-  color: #fff;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ff15, 0 0 20px #00ff15,
-    0 0 25px #00ff15, 0 0 30px #00ff15, 0 0 35px #00ff15;
+
+#react-tree-vis li div.highlight {
+  background-color: var(--node-hl-bg-color);
+  box-shadow: var(--node-hl-shadow);
+  color: var(--node-hl-font-color);
+  text-shadow: var(--node-hl-text-shadow);
 }
-#tree li div.highlight.red {
+
+#react-tree-vis li div.highlight.red {
   color: #fff;
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f00, 0 0 20px #f00,
     0 0 25px #f00, 0 0 30px #f00, 0 0 35px #f00;
 }
-#tree li div.highlight.black {
+
+#react-tree-vis li div.highlight.black {
   color: #fff;
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #000, 0 0 20px #000,
     0 0 25px #000, 0 0 30px #000, 0 0 35px #000;
 }
+
 /* Hover Styles starts */
-#tree li div:hover,
-#tree li div:hover + ul li div.normal {
-  color: #002574;
-  box-shadow: -1px -1px 5px #fff, 1px 1px 5px #babecc;
+#react-tree-vis li div:hover {
+  color: var(--node-hover-font-color);
+  background-color: var(--node-hover-bg-color);
+  box-shadow: var(--node-hover-shadow);
+  text-shadow: var(--node-hover-text-shadow);
 }
-#tree li div:hover + ul li::after,
-#tree li div:hover + ul li::before,
-#tree li div:hover + ul::before,
-#tree li div:hover + ul ul::before {
-  border-color: #5f6674;
+
+#react-tree-vis li div:hover + ul li::after,
+#react-tree-vis li div:hover + ul li::before,
+#react-tree-vis li div:hover + ul::before,
+#react-tree-vis li div:hover + ul ul::before {
+  border-color: var(--line-hover-color);
 }
-#tree li.null div {
+
+#react-tree-vis li.null div {
   color: rgba(124, 124, 124, 0.185);
 }
-#tree li.null div:hover,
-#tree li.null div:hover + ul li div {
+
+#react-tree-vis li.null div:hover,
+#react-tree-vis li.null div:hover + ul li div {
   color: rgba(255, 0, 0, 0.726);
 }
-#tree .height {
+
+#react-tree-vis .height {
   font-size: 13px;
 }

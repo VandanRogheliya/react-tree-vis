@@ -1,8 +1,13 @@
 import React, { forwardRef, useEffect, useImperativeHandle } from 'react'
+import { CSS_VARIABLE_MAP, TREE_ID } from '../constants'
 import BST from '../data-structures/BSTree'
 import useTreeState from '../hooks/useTreeState'
 import '../styles/BinarySearchTree.css'
-import { BinaryTreeCheckType, TraversalOrderType } from '../types'
+import {
+  BinaryTreeCheckType,
+  TraversalOrderType,
+  TreeStylesType,
+} from '../types'
 
 type BSTHandle = {
   insert: () => void
@@ -10,10 +15,11 @@ type BSTHandle = {
 
 type BSTProps = {
   data?: number[]
+  treeStyles?: TreeStylesType
 }
 
 const BinarySearchTree: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
-  { data }: BSTProps,
+  { data, treeStyles }: BSTProps,
   ref: React.MutableRefObject<any>,
 ) => {
   const { tree, treeJSX, setTree } = useTreeState(null)
@@ -74,17 +80,17 @@ const BinarySearchTree: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
 
   useEffect(() => {
     if (data) handleData()
-    document.getElementById('tree').style.setProperty('--border-color', '#f88') // TODO: integrate css variables
-    // window
-    //   .getComputedStyle(document.getElementById('tree'))
-    //   .getPropertyValue('--border-color')
-    // console.log(
-    //   ,
-    // )
   }, [data])
 
+  useEffect(() => {
+    if (treeStyles?.lineColor)
+      document
+        .getElementById(TREE_ID)
+        .style.setProperty(CSS_VARIABLE_MAP.lineColor, treeStyles.lineColor) // TODO: integrate css variables
+  })
+
   return (
-    <div id="tree" className="tree" ref={ref}>
+    <div id={TREE_ID} ref={ref}>
       <ul>{treeJSX}</ul>
     </div>
   )

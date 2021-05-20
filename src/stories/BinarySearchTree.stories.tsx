@@ -102,7 +102,11 @@ export const Primary: Story = () => {
           Append element to data
         </button>
       </div>
-      <BinarySearchTree ref={ref} data={defaultData} />
+      <BinarySearchTree
+        ref={ref}
+        data={defaultData}
+        treeStyles={{ lineColor: '#f23' }}
+      />
     </>
   )
 }
