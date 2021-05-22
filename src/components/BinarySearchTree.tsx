@@ -1,7 +1,8 @@
 import React, { forwardRef, useEffect, useImperativeHandle } from 'react'
-import { CSS_VARIABLE_MAP, TREE_ID } from '../constants'
+import { TREE_ID } from '../constants'
 import BST from '../data-structures/BSTree'
 import useTreeState from '../hooks/useTreeState'
+import useTreeStyle from '../hooks/useTreeStyle'
 import '../styles/BinarySearchTree.css'
 import {
   BinaryTreeCheckType,
@@ -23,6 +24,7 @@ const BinarySearchTree: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
   ref: React.MutableRefObject<any>,
 ) => {
   const { tree, treeJSX, setTree } = useTreeState(null)
+  useTreeStyle(treeStyles)
 
   useImperativeHandle(ref, () => ({
     insert: (value: number) => {
@@ -81,13 +83,6 @@ const BinarySearchTree: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
   useEffect(() => {
     if (data) handleData()
   }, [data])
-
-  useEffect(() => {
-    if (treeStyles?.lineColor)
-      document
-        .getElementById(TREE_ID)
-        .style.setProperty(CSS_VARIABLE_MAP.lineColor, treeStyles.lineColor) // TODO: integrate css variables
-  })
 
   return (
     <div id={TREE_ID} ref={ref}>

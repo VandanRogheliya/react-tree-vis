@@ -7,9 +7,16 @@ import useTree from '../hooks/useTree'
 export default {
   title: 'Tree/Binary Search Tree',
   component: BinarySearchTree,
+  argTypes: {
+    lineColor: {
+      control: {
+        type: 'color',
+      },
+    },
+  },
 } as Meta
 
-export const Primary: Story = () => {
+export const Primary: Story = ({ lineColor }) => {
   const ref = useRef(null)
   const {
     insert,
@@ -105,7 +112,7 @@ export const Primary: Story = () => {
       <BinarySearchTree
         ref={ref}
         data={defaultData}
-        treeStyles={{ lineColor: '#f23' }}
+        treeStyles={{ lineColor }}
       />
     </>
   )
