@@ -3,20 +3,28 @@ import React, { useRef, useState } from 'react'
 import { Meta, Story } from '@storybook/react'
 import BinarySearchTree from '../components/BinarySearchTree'
 import useTree from '../hooks/useTree'
+import { CSS_VARIABLE_MAP } from '../constants'
+
+const handleStyleArgTypes = () => {
+  const argTypes = {}
+  for (const [style, { defaultValue }] of Object.entries(CSS_VARIABLE_MAP)) {
+    argTypes[style] = {
+      control: {
+        type: style.includes('Color') ? 'color' : 'text',
+      },
+      defaultValue,
+    }
+  }
+  return argTypes
+}
 
 export default {
   title: 'Tree/Binary Search Tree',
   component: BinarySearchTree,
-  argTypes: {
-    lineColor: {
-      control: {
-        type: 'color',
-      },
-    },
-  },
+  argTypes: handleStyleArgTypes(),
 } as Meta
 
-export const Primary: Story = ({ lineColor }) => {
+export const Primary: Story = ({ ...args }) => {
   const ref = useRef(null)
   const {
     insert,
@@ -109,12 +117,7 @@ export const Primary: Story = ({ lineColor }) => {
           Append element to data
         </button>
       </div>
-      <BinarySearchTree
-        ref={ref}
-        data={defaultData}
-        treeStyles={{ lineColor }}
-      />
+      <BinarySearchTree ref={ref} data={defaultData} treeStyles={{ ...args }} />
     </>
   )
 }
-Primary.storyName = 'Random'

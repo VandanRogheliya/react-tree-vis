@@ -7,7 +7,7 @@ const useTreeStyle = (treeStyles: TreeStylesType): void => {
     for (const [style, value] of Object.entries(treeStyles)) {
       document
         .getElementById(TREE_ID)
-        .style.setProperty(CSS_VARIABLE_MAP[style], value)
+        .style.setProperty(CSS_VARIABLE_MAP[style].variableName, value)
     }
   }, [treeStyles])
 }

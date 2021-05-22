@@ -23,17 +23,22 @@ export type TreeStylesType = {
   lineHoverColor?: string
   lineRadius?: string
   nodeBorderRadius?: string
+  nodeBorder?: string
   nodeBackgroundColor?: string
   nodeFontColor?: string
   nodeShadow?: string
   nodeTextShadow?: string
+  nodeHighlightBorder?: string
   nodeHighlightBackgroundColor?: string
   nodeHighlightFontColor?: string
   nodeHighlightShadow?: string
   nodeHighlightTextShadow?: string
+  nodeHoverBorder?: string
   nodeHoverBackgroundColor?: string
   nodeHoverFontColor?: string
   nodeHoverShadow?: string
   nodeHoverTextShadow?: string
+  nodeNullFontColor?: string
+  nodeNullHoverFontColor?: string
   transitionDuration?: string
 }

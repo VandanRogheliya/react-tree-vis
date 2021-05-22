@@ -3,6 +3,7 @@
   --line-hover-color: #5f6674;
   --line-radius: 5px;
 
+  --node-border: none;
   --node-border-radius: 200px;
   --node-bg-color: #fff;
   --node-font-color: #666;
@@ -10,16 +11,21 @@
   --node-text-shadow: none;
 
   /* highlighted node */
+  --node-hl-border: none;
   --node-hl-bg-color: #fff;
   --node-hl-font-color: #fff;
   --node-hl-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
   --node-hl-text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ff15,
     0 0 20px #00ff15, 0 0 25px #00ff15, 0 0 30px #00ff15, 0 0 35px #00ff15;
 
+    --node-hover-border: none;
   --node-hover-bg-color: #fff;
   --node-hover-font-color: #002574;
   --node-hover-shadow: -1px -1px 5px #fff, 1px 1px 5px #babecc;
   --node-hover-text-shadow: none;
+
+  --node-null-font-color: #7c7c7c2f;
+  --node-null-hover-font-color: #ff0000b9;
 
   --transition: 0.5s;
 }
@@ -109,6 +115,7 @@
   box-shadow: var(--node-shadow);
   text-shadow: var(--node-text-shadow);
   border-radius: var(--node-border-radius);
+  border: var(--node-border);
   background-color: var(--node-bg-color);
   transition: all var(--transition);
 }
@@ -129,6 +136,7 @@
 
 #react-tree-vis li div.highlight {
   background-color: var(--node-hl-bg-color);
+  border: var(--node-hl-border);
   box-shadow: var(--node-hl-shadow);
   color: var(--node-hl-font-color);
   text-shadow: var(--node-hl-text-shadow);
@@ -148,6 +156,7 @@
 
 /* Hover Styles starts */
 #react-tree-vis li div:hover {
+  border: var(--node-hover-border);
   color: var(--node-hover-font-color);
   background-color: var(--node-hover-bg-color);
   box-shadow: var(--node-hover-shadow);
@@ -162,12 +171,11 @@
 }
 
 #react-tree-vis li.null div {
-  color: rgba(124, 124, 124, 0.185);
+  color: var(--node-null-font-color);
 }
 
-#react-tree-vis li.null div:hover,
-#react-tree-vis li.null div:hover + ul li div {
-  color: rgba(255, 0, 0, 0.726);
+#react-tree-vis li.null div:hover {
+  color: var(--node-null-hover-font-color);
 }
 
 #react-tree-vis .height {
