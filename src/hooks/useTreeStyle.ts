@@ -13,6 +13,7 @@ const useTreeStyle = (treeStyles: TreeStylesType): void => {
   }
   useEffect(() => {
     handleStyles()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [treeStyles])
 }
 export default useTreeStyle

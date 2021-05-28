@@ -1,9 +1,8 @@
 import React, { useRef } from 'react'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { render, screen } from '@testing-library/react'
-import BinarySearchTree from '../components/BinarySearchTree'
 import '@testing-library/jest-dom'
-import useTree from '../hooks/useTree'
+import { BinarySearchTree, useTree } from '../index'
 
 const DATA = [
   4, 29, 74, 48, 97, 80, 25, 30, 0, 101, 42, 91, 33, 81, 86, 204, 44, 64, 9, 22,

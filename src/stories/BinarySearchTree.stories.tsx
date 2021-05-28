@@ -1,8 +1,6 @@
 import React, { useRef, useState } from 'react'
-
 import { Meta, Story } from '@storybook/react'
-import BinarySearchTree from '../components/BinarySearchTree'
-import useTree from '../hooks/useTree'
+import { BinarySearchTree, useTree } from '../index'
 import { CSS_VARIABLE_MAP } from '../constants'
 
 const handleStyleArgTypes = () => {

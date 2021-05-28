@@ -82,6 +82,7 @@ const BinarySearchTree: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
 
   useEffect(() => {
     if (data) handleData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
   return (
