@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BinaryTreeCheckType, TraversalOrderType } from '../types'
 
 type InsertFunctionType = (value: number) => void
@@ -11,6 +11,7 @@ type GenerateRandomTreeFunctionType = (countOfNodes: number) => void
 type CheckTreeTypeFunctionType = () => BinaryTreeCheckType[]
 
 type ReturnType = {
+  ref: React.MutableRefObject<any>
   insert: InsertFunctionType
   remove: RemoveFunctionType
   search: SearchFunctionType
@@ -21,7 +22,8 @@ type ReturnType = {
   checkTreeType: CheckTreeTypeFunctionType
 }
 
-const useTree = (ref: React.MutableRefObject<any>): ReturnType => {
+const useTree = (): ReturnType => {
+  const ref = useRef(null)
   const [insertFunction, setInsertFunction] = useState<InsertFunctionType>(null)
   const [removeFunction, setRemoveFunction] = useState<RemoveFunctionType>(null)
   const [searchFunction, setSearchFunction] = useState<SearchFunctionType>(null)
@@ -50,9 +52,10 @@ const useTree = (ref: React.MutableRefObject<any>): ReturnType => {
         ref?.current?.generateRandomTree(countOfNodes),
     )
     setCheckTreeTypeFunction(() => () => ref?.current?.checkTreeType())
-  }, [])
+  }, [ref])
 
   return {
+    ref,
     insert: insertFunction,
     remove: removeFunction,
     search: searchFunction,

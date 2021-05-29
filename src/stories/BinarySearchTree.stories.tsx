@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { Meta, Story } from '@storybook/react'
 import { BinarySearchTree, useTree } from '../index'
 import { CSS_VARIABLE_MAP } from '../constants'
@@ -23,8 +23,8 @@ export default {
 } as Meta
 
 export const Primary: Story = ({ ...args }) => {
-  const ref = useRef(null)
   const {
+    ref,
     insert,
     remove,
     search,
@@ -33,7 +33,7 @@ export const Primary: Story = ({ ...args }) => {
     balance,
     generateRandomTree,
     checkTreeType,
-  } = useTree(ref)
+  } = useTree()
 
   const [insertValue, setInsertValue] = useState(0)
   const [removeValue, setRemoveValue] = useState(0)

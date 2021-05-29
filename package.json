@@ -18,6 +18,10 @@
   },
   "author": "Vandan Rogheliya",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VandanRogheliya/react-tree-vis"
+  },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
