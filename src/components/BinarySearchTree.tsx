@@ -9,6 +9,7 @@ import {
   TraversalOrderType,
   TreeStylesType,
 } from '../types'
+import { compareArray } from '../util'
 
 type BSTHandle = {
   insert: () => void
@@ -92,4 +93,10 @@ const BinarySearchTree: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
   )
 }
 
-export default forwardRef(BinarySearchTree)
+// returns true if data has changed
+const compareBinarySearchTree = (previousPros: BSTProps, newProps: BSTProps) =>
+  previousPros.data &&
+  newProps.data &&
+  compareArray(previousPros.data, newProps.data)
+
+export default React.memo(forwardRef(BinarySearchTree), compareBinarySearchTree)

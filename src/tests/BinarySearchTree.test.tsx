@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
@@ -16,27 +16,21 @@ describe('binary search tree', () => {
   })
 
   it('should insert all data', () => {
-    const { result: resultUseRef } = renderHook(() => useRef(null))
     // TODO: investigate why insert does not work without data prop
-    render(<BinarySearchTree ref={resultUseRef.current} data={[-1]} />)
-    const { result: resultUseTree } = renderHook(() =>
-      useTree(resultUseRef.current),
-    )
+    const { result } = renderHook(() => useTree())
+    render(<BinarySearchTree ref={result.current.ref} data={[-1]} />)
     act(() => {
-      DATA.forEach((num) => resultUseTree.current.insert(num))
+      DATA.forEach((num) => result.current.insert(num))
     })
 
     DATA.forEach((num) => expect(screen.getByText(num)).toBeInTheDocument())
   })
 
   it('should delete all data', () => {
-    const { result: resultUseRef } = renderHook(() => useRef(null))
-    render(<BinarySearchTree ref={resultUseRef.current} data={DATA} />)
-    const { result: resultUseTree } = renderHook(() =>
-      useTree(resultUseRef.current),
-    )
+    const { result } = renderHook(() => useTree())
+    render(<BinarySearchTree ref={result.current.ref} data={DATA} />)
     act(() => {
-      DATA.forEach((num) => resultUseTree.current.remove(num))
+      DATA.forEach((num) => result.current.remove(num))
     })
 
     DATA.forEach((num) => expect(screen.queryByText(num)).toBeNull())
