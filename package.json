@@ -12,6 +12,7 @@
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "test": "jest",
@@ -23,6 +24,23 @@
     "type": "git",
     "url": "https://github.com/VandanRogheliya/react-tree-vis"
   },
+  "homepage": "http://vandanrogheliya.github.io/react-tree-vis",
+  "keywords": [
+    "react",
+    "hooks",
+    "tree",
+    "BST",
+    "binary-search-tree",
+    "binary tree",
+    "visualization",
+    "data-visualization",
+    "interactive tree",
+    "interactive",
+    "insert",
+    "search",
+    "remove",
+    "node"
+  ],
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
@@ -34,6 +52,7 @@
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-links": "^6.2.9",
+    "@storybook/addon-storysource": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
@@ -51,6 +70,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "gh-pages": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
     "postcss": "^8.3.0",

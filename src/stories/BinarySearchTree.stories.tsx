@@ -22,7 +22,49 @@ export default {
   argTypes: handleStyleArgTypes(),
 } as Meta
 
-export const Primary: Story = ({ ...args }) => {
+export const SimpleExample: Story = ({ ...args }) => {
+  const { ref, insert, remove, search } = useTree()
+
+  const [insertValue, setInsertValue] = useState(0)
+  const [removeValue, setRemoveValue] = useState(0)
+  const [searchValue, setSearchValue] = useState(0)
+  const [found, setFound] = useState(false)
+
+  return (
+    <>
+      <div style={{ textAlign: 'center' }}>
+        <input
+          type="number"
+          onChange={(elem) =>
+            setInsertValue(parseInt(elem.currentTarget.value))
+          }
+        />
+        <button onClick={() => insert(insertValue)}>Insert</button>
+        <br />
+        <input
+          type="number"
+          onChange={(elem) =>
+            setRemoveValue(parseInt(elem.currentTarget.value))
+          }
+        />
+        <button onClick={() => remove(removeValue)}>Remove</button>
+        <br />
+        <input
+          type="number"
+          onChange={(elem) => {
+            setFound(false)
+            setSearchValue(parseInt(elem.currentTarget.value))
+          }}
+        />
+        <button onClick={() => setFound(search(searchValue))}>Search</button>
+        <p>Found: {found ? 'Yes' : 'No'}</p>
+      </div>
+      <BinarySearchTree ref={ref} data={[2, 1, 3]} treeStyles={{ ...args }} />
+    </>
+  )
+}
+
+export const AllFunctions: Story = ({ ...args }) => {
   const {
     ref,
     insert,
