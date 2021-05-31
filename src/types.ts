@@ -42,3 +42,25 @@ export type TreeStylesType = {
   nodeNullHoverFontColor?: string
   transitionDuration?: string
 }
+
+export type InsertFunctionType = (value: number | string) => void
+export type RemoveFunctionType = (value: number) => boolean
+export type SearchFunctionType = (value: number) => boolean
+export type GetDataFunctionType = (
+  traversalOrder: TraversalOrderType,
+) => number[]
+export type ClearFunctionType = () => void
+export type BalanceFunctionType = () => void
+export type GenerateRandomTreeFunctionType = (countOfNodes: number) => void
+export type CheckTreeTypeFunctionType = () => BinaryTreeCheckType[]
+
+export type TreeRefType = {
+  insert: InsertFunctionType
+  remove: RemoveFunctionType
+  search: SearchFunctionType
+  getData: GetDataFunctionType
+  clear: ClearFunctionType
+  balance: BalanceFunctionType
+  generateRandomTree: GenerateRandomTreeFunctionType
+  checkTreeType: CheckTreeTypeFunctionType
+}
