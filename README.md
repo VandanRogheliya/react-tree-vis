@@ -5,6 +5,9 @@
   <a href="https://github.com/VandanRogheliya/react-tree-vis#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg?style=for-the-badge" />
   </a>
+  <a href="http://www.typescriptlang.org/" target="_blank">
+    <img src="https://img.shields.io/badge/%3C%2F%3E-typescript-blue?style=for-the-badge" />
+  </a>
   <a href="https://github.com/VandanRogheliya/react-tree-vis/graphs/commit-activity" target="_blank">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge" />
   </a>
@@ -16,15 +19,13 @@
   <img src="./react-tree-vis-demo.gif" width="700" />
 <p/>
 
-> Managing and visualizing information in tree data structures.
+> Allows you to store and manage information in different tree data structures.
 
 ### :video_game: [Code Sandbox](https://codesandbox.io/s/react-tree-vis-simple-example-h7rh8?file=/src/App.js)
 
 ### ✨ [Storybook](https://vandanrogheliya.github.io/react-tree-vis)
 
 ### :gift: [NPM](https://www.npmjs.com/package/react-tree-vis)
-
-<!-- TODO: Add image or gif -->
 
 ## Features
 
