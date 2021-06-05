@@ -1,36 +1,33 @@
 import React, { forwardRef, useEffect, useImperativeHandle } from 'react'
 import { TREE_ID } from '../constants'
-import BST from '../data-structures/BSTree'
+import TrieDataStructure from '../data-structures/Trie'
 import useTreeState from '../hooks/useTreeState'
 import useTreeStyle from '../hooks/useTreeStyle'
 import '../styles/BinarySearchTree.css'
 import {
   BinaryTreeCheckType,
   TraversalOrderType,
+  TreeRefType,
   TreeStylesType,
 } from '../types'
-
-type BSTHandle = {
-  insert: () => void
-}
 
 type BSTProps = {
   data?: number[]
   treeStyles?: TreeStylesType
 }
 
-const Trie: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
+const Trie: React.ForwardRefRenderFunction<TreeRefType, BSTProps> = (
   { data, treeStyles }: BSTProps,
-  ref: React.MutableRefObject<any>,
+  ref: React.MutableRefObject<TreeRefType>,
 ) => {
   const { tree, treeJSX, setTree } = useTreeState(null)
   useTreeStyle(treeStyles)
 
   useImperativeHandle(ref, () => ({
-    insert: (value: number) => {
+    insert: (value: string) => {
       // if tree is empty
       if (!tree?.root) {
-        const newTree = new BST()
+        const newTree = new TrieDataStructure()
         newTree.insert(value)
         setTree(newTree)
         return
@@ -59,14 +56,14 @@ const Trie: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
       return traversalData
     },
     clear: () => {
-      setTree(new BST())
+      setTree(new TrieDataStructure())
     },
     balance: () => {
       tree.balance()
       setTree(tree)
     },
     generateRandomTree: (countOfNodes: number) => {
-      const newTree = new BST(countOfNodes)
+      const newTree = new TrieDataStructure(countOfNodes)
       setTree(newTree)
     },
     checkTreeType: (): BinaryTreeCheckType[] => {
@@ -75,7 +72,7 @@ const Trie: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
   }))
 
   const handleData = () => {
-    const newTree = new BST()
+    const newTree = new TrieDataStructure()
     data.forEach((elem) => newTree.insert(elem))
     setTree(newTree)
   }
@@ -86,7 +83,7 @@ const Trie: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
   }, [data])
 
   return (
-    <div id={TREE_ID} ref={ref}>
+    <div id={TREE_ID}>
       <ul>{treeJSX}</ul>
     </div>
   )
