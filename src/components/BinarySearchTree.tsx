@@ -6,23 +6,23 @@ import useTreeStyle from '../hooks/useTreeStyle'
 import '../styles/BinarySearchTree.css'
 import {
   BinaryTreeCheckType,
+  BinaryTreeRefType,
   TraversalOrderType,
   TreeStylesType,
 } from '../types'
 import { compareArray } from '../util'
-
-type BSTHandle = {
-  insert: () => void
-}
 
 type BSTProps = {
   data?: number[]
   treeStyles?: TreeStylesType
 }
 
-const BinarySearchTree: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
+const BinarySearchTree: React.ForwardRefRenderFunction<
+  BinaryTreeRefType,
+  BSTProps
+> = (
   { data, treeStyles }: BSTProps,
-  ref: React.MutableRefObject<any>,
+  ref: React.MutableRefObject<BinaryTreeRefType>,
 ) => {
   const { tree, treeJSX, setTree } = useTreeState(null)
   useTreeStyle(treeStyles)
@@ -87,7 +87,7 @@ const BinarySearchTree: React.ForwardRefRenderFunction<BSTHandle, BSTProps> = (
   }, [data])
 
   return (
-    <div id={TREE_ID} ref={ref}>
+    <div id={TREE_ID}>
       <ul>{treeJSX}</ul>
     </div>
   )
