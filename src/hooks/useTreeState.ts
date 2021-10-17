@@ -1,21 +1,22 @@
 import { useState } from 'react'
 import BST from '../data-structures/BSTree'
 
-type TreeType = BST
-type ReturnType = {
+type ReturnType<TreeType> = {
   tree: TreeType
   treeJSX: JSX.Element
   setTree: (newTreeObject: TreeType) => void
 }
 
-const useTreeState = (treeObject: TreeType): ReturnType => {
+function useTreeState<TreeType = BST>(
+  treeObject: TreeType,
+): ReturnType<TreeType> {
   const [tree, setTreeInternal] = useState<TreeType>(treeObject)
   const [treeJSX, setTreeJSX] = useState<JSX.Element>(
-    treeObject?.root.currentJSX,
+    (treeObject as any)?.root.currentJSX,
   )
   const setTree = (newTreeObject: TreeType) => {
     setTreeInternal(newTreeObject)
-    setTreeJSX(newTreeObject?.root?.currentJSX)
+    setTreeJSX((newTreeObject as any)?.root?.currentJSX)
   }
   return { tree, treeJSX, setTree }
 }

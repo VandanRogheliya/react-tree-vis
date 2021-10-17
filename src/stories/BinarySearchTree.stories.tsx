@@ -1,20 +1,7 @@
 import React, { useState } from 'react'
 import { Meta, Story } from '@storybook/react'
-import { BinarySearchTree, useTree } from '../index'
-import { CSS_VARIABLE_MAP } from '../constants'
-
-const handleStyleArgTypes = () => {
-  const argTypes = {}
-  for (const [style, { defaultValue }] of Object.entries(CSS_VARIABLE_MAP)) {
-    argTypes[style] = {
-      control: {
-        type: style.includes('Color') ? 'color' : 'text',
-      },
-      defaultValue,
-    }
-  }
-  return argTypes
-}
+import { BinarySearchTree, useBinarySearchTree } from '../index'
+import { handleStyleArgTypes } from '../util'
 
 export default {
   title: 'Tree/Binary Search Tree',
@@ -23,7 +10,7 @@ export default {
 } as Meta
 
 export const SimpleExample: Story = ({ ...args }) => {
-  const { ref, insert, remove, search } = useTree()
+  const { ref, insert, remove, search } = useBinarySearchTree()
 
   const [insertValue, setInsertValue] = useState(0)
   const [removeValue, setRemoveValue] = useState(0)
@@ -75,7 +62,7 @@ export const AllFunctions: Story = ({ ...args }) => {
     balance,
     generateRandomTree,
     checkTreeType,
-  } = useTree()
+  } = useBinarySearchTree()
 
   const [insertValue, setInsertValue] = useState(0)
   const [removeValue, setRemoveValue] = useState(0)

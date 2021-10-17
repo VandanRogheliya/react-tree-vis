@@ -6,7 +6,7 @@ import useTreeStyle from '../hooks/useTreeStyle'
 import '../styles/BinarySearchTree.css'
 import {
   BinaryTreeCheckType,
-  TreeRefType,
+  BinaryTreeRefType,
   TraversalOrderType,
   TreeStylesType,
 } from '../types'
@@ -17,79 +17,81 @@ type BSTProps = {
   treeStyles?: TreeStylesType
 }
 
-const BinarySearchTree: React.ForwardRefRenderFunction<TreeRefType, BSTProps> =
-  (
-    { data, treeStyles }: BSTProps,
-    ref: React.MutableRefObject<TreeRefType>,
-  ) => {
-    const { tree, treeJSX, setTree } = useTreeState(null)
-    useTreeStyle(treeStyles)
+const BinarySearchTree: React.ForwardRefRenderFunction<
+  BinaryTreeRefType,
+  BSTProps
+> = (
+  { data, treeStyles }: BSTProps,
+  ref: React.MutableRefObject<BinaryTreeRefType>,
+) => {
+  const { tree, treeJSX, setTree } = useTreeState(null)
+  useTreeStyle(treeStyles)
 
-    useImperativeHandle(ref, () => ({
-      insert: (value: number) => {
-        // if tree is empty
-        if (!tree?.root) {
-          const newTree = new BST()
-          newTree.insert(value)
-          setTree(newTree)
-          return
-        }
-
-        tree.insert(value)
-        setTree(tree)
-      },
-      remove: (value: number): boolean => {
-        if (!tree?.root) return false
-
-        if (!tree.search(value)) return false
-        tree.remove(value)
-        setTree(tree.root ? tree : null)
-        return true
-      },
-      search: (value: number): boolean => {
-        if (!tree?.root) return false
-        const foundNode = tree.search(value)
-        if (foundNode) setTree(tree)
-        return foundNode
-      },
-      getData: (traversalOrder: TraversalOrderType): number[] => {
-        const traversalData = []
-        tree[traversalOrder](traversalData)
-        return traversalData
-      },
-      clear: () => {
-        setTree(new BST())
-      },
-      balance: () => {
-        tree.balance()
-        setTree(tree)
-      },
-      generateRandomTree: (countOfNodes: number) => {
-        const newTree = new BST(countOfNodes)
+  useImperativeHandle(ref, () => ({
+    insert: (value: number) => {
+      // if tree is empty
+      if (!tree?.root) {
+        const newTree = new BST()
+        newTree.insert(value)
         setTree(newTree)
-      },
-      checkTreeType: (): BinaryTreeCheckType[] => {
-        return tree.checkBST()
-      },
-    }))
+        return
+      }
 
-    const handleData = () => {
-      const newTree = new BST()
-      data.forEach((elem) => newTree.insert(elem))
+      tree.insert(value)
+      setTree(tree)
+    },
+    remove: (value: number): boolean => {
+      if (!tree?.root) return false
+
+      if (!tree.search(value)) return false
+      tree.remove(value)
+      setTree(tree.root ? tree : null)
+      return true
+    },
+    search: (value: number): boolean => {
+      if (!tree?.root) return false
+      const foundNode = tree.search(value)
+      if (foundNode) setTree(tree)
+      return foundNode
+    },
+    getData: (traversalOrder: TraversalOrderType): number[] => {
+      const traversalData = []
+      tree[traversalOrder](traversalData)
+      return traversalData
+    },
+    clear: () => {
+      setTree(new BST())
+    },
+    balance: () => {
+      tree.balance()
+      setTree(tree)
+    },
+    generateRandomTree: (countOfNodes: number) => {
+      const newTree = new BST(countOfNodes)
       setTree(newTree)
-    }
+    },
+    checkTreeType: (): BinaryTreeCheckType[] => {
+      return tree.checkBST()
+    },
+  }))
 
-    useEffect(() => {
-      if (data) handleData()
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data])
-
-    return (
-      <div id={TREE_ID}>
-        <ul>{treeJSX}</ul>
-      </div>
-    )
+  const handleData = () => {
+    const newTree = new BST()
+    data.forEach((elem) => newTree.insert(elem))
+    setTree(newTree)
   }
+
+  useEffect(() => {
+    if (data) handleData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data])
+
+  return (
+    <div id={TREE_ID}>
+      <ul>{treeJSX}</ul>
+    </div>
+  )
+}
 
 // returns true if data has changed
 const compareBinarySearchTree = (previousPros: BSTProps, newProps: BSTProps) =>

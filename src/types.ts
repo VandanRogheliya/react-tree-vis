@@ -43,7 +43,7 @@ export type TreeStylesType = {
   transitionDuration?: string
 }
 
-export type InsertFunctionType = (value: number | string) => void
+export type InsertFunctionType = (value: number) => void
 export type RemoveFunctionType = (value: number) => boolean
 export type SearchFunctionType = (value: number) => boolean
 export type GetDataFunctionType = (
@@ -54,7 +54,7 @@ export type BalanceFunctionType = () => void
 export type GenerateRandomTreeFunctionType = (countOfNodes: number) => void
 export type CheckTreeTypeFunctionType = () => BinaryTreeCheckType[]
 
-export type TreeRefType = {
+export type BinaryTreeRefType = {
   insert: InsertFunctionType
   remove: RemoveFunctionType
   search: SearchFunctionType
@@ -63,4 +63,22 @@ export type TreeRefType = {
   balance: BalanceFunctionType
   generateRandomTree: GenerateRandomTreeFunctionType
   checkTreeType: CheckTreeTypeFunctionType
+}
+
+export type InsertFunctionTrieType = (word: string) => void
+export type RemoveFunctionTrieType = (word: string) => boolean
+export type SearchFunctionTrieType = (word: string) => boolean
+export type SearchPrefixFunctionTrieType = (word: string) => boolean
+export type GetAllWordsFunctionTrieType = () => string[]
+export type GenerateRandomTrieFunctionType = (num: number) => void
+export type RemoveHighlightTrieFunctionType = () => void
+
+export type TrieRefType = {
+  insert: InsertFunctionTrieType
+  remove: RemoveFunctionTrieType
+  search: SearchFunctionTrieType
+  searchPrefix: SearchPrefixFunctionTrieType
+  getAllWords: GetAllWordsFunctionTrieType
+  generateRandomTrie: GenerateRandomTrieFunctionType
+  removeHighlight: RemoveHighlightTrieFunctionType
 }

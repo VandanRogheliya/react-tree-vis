@@ -4,72 +4,73 @@ import TrieDataStructure from '../data-structures/Trie'
 import useTreeState from '../hooks/useTreeState'
 import useTreeStyle from '../hooks/useTreeStyle'
 import '../styles/BinarySearchTree.css'
-import {
-  BinaryTreeCheckType,
-  TraversalOrderType,
-  TreeRefType,
-  TreeStylesType,
-} from '../types'
+import { TreeStylesType, TrieRefType } from '../types'
+import { compareArray } from '../util'
 
-type BSTProps = {
-  data?: number[]
+type TrieProps = {
+  data?: string[]
   treeStyles?: TreeStylesType
 }
 
-const Trie: React.ForwardRefRenderFunction<TreeRefType, BSTProps> = (
-  { data, treeStyles }: BSTProps,
-  ref: React.MutableRefObject<TreeRefType>,
+const Trie: React.ForwardRefRenderFunction<TrieRefType, TrieProps> = (
+  { data, treeStyles }: TrieProps,
+  ref: React.MutableRefObject<TrieRefType>,
 ) => {
-  const { tree, treeJSX, setTree } = useTreeState(null)
+  const { tree, treeJSX, setTree } = useTreeState<TrieDataStructure>(null)
   useTreeStyle(treeStyles)
 
-  useImperativeHandle(ref, () => ({
-    insert: (value: string) => {
+  const trieFunctions: TrieRefType = {
+    insert: (word: string) => {
       // if tree is empty
       if (!tree?.root) {
         const newTree = new TrieDataStructure()
-        newTree.insert(value)
+        newTree.insert(word)
         setTree(newTree)
         return
       }
 
-      tree.insert(value)
+      tree.insert(word)
       setTree(tree)
     },
-    remove: (value: number): boolean => {
+    remove: (word: string) => {
+      if (!tree?.root || !word) return false
+      if (tree.deleteWord(word)) {
+        setTree(tree.root ? tree : null)
+        return true
+      }
+      return false
+    },
+    search: (word: string) => {
+      if (!tree?.root || !word) return false
+      if (tree.searchWord(word)) {
+        // Highlights the word in the trie
+        tree.findPrefix(word)
+        setTree(tree)
+        return true
+      }
+      return false
+    },
+    searchPrefix: (word: string) => {
       if (!tree?.root) return false
+      const isPrefixFound = tree.findPrefix(word)
+      setTree(tree)
+      return isPrefixFound
+    },
+    getAllWords: () => {
+      if (!tree?.root) return []
+      return tree.findAllWords()
+    },
+    generateRandomTrie: (wordCount: number) => {
+      const newTrie = new TrieDataStructure(wordCount)
+      setTree(newTrie)
+    },
+    removeHighlight: () => {
+      tree.removeHighligt()
+      setTree(tree)
+    },
+  }
 
-      if (!tree.search(value)) return false
-      tree.remove(value)
-      setTree(tree.root ? tree : null)
-      return true
-    },
-    search: (value: number): boolean => {
-      if (!tree?.root) return false
-      const foundNode = tree.search(value)
-      if (foundNode) setTree(tree)
-      return foundNode
-    },
-    getData: (traversalOrder: TraversalOrderType): number[] => {
-      const traversalData = []
-      tree[traversalOrder](traversalData)
-      return traversalData
-    },
-    clear: () => {
-      setTree(new TrieDataStructure())
-    },
-    balance: () => {
-      tree.balance()
-      setTree(tree)
-    },
-    generateRandomTree: (countOfNodes: number) => {
-      const newTree = new TrieDataStructure(countOfNodes)
-      setTree(newTree)
-    },
-    checkTreeType: (): BinaryTreeCheckType[] => {
-      return tree.checkBST()
-    },
-  }))
+  useImperativeHandle(ref, () => trieFunctions)
 
   const handleData = () => {
     const newTree = new TrieDataStructure()
@@ -90,10 +91,10 @@ const Trie: React.ForwardRefRenderFunction<TreeRefType, BSTProps> = (
 }
 
 // returns true if data has changed
-// const compareBinarySearchTree = (previousPros: BSTProps, newProps: BSTProps) =>
-//   previousPros.data &&
-//   newProps.data &&
-//   compareArray(previousPros.data, newProps.data)
+const compareTrie = (previousPros: TrieProps, newProps: TrieProps) =>
+  previousPros.data &&
+  newProps.data &&
+  compareArray(previousPros.data, newProps.data)
 
-// export default React.memo(forwardRef(Trie), compareBinarySearchTree)
-export default forwardRef(Trie)
+export default React.memo(forwardRef(Trie), compareTrie)
+// export default forwardRef(Trie)

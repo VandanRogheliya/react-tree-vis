@@ -123,14 +123,11 @@ class Trie {
     }
 
     node.updateJSX()
+    return true
   }
 
   findPrefix(word: string): boolean {
-    // removes highlight if any
-    if (this.highlightedTill) {
-      this.highlightedTill.updateJSX()
-      this.highlightedTill = null
-    }
+    this.removeHighligt()
     if (word === '') return false
     word = word.trim()
     word = word.toUpperCase()
@@ -182,6 +179,13 @@ class Trie {
       }
       indexOfWordsAdded.add(value)
       this.insert(allWords[value])
+    }
+  }
+
+  removeHighligt(): void {
+    if (this.highlightedTill) {
+      this.highlightedTill.updateJSX()
+      this.highlightedTill = null
     }
   }
 }
