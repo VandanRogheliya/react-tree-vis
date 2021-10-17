@@ -36,7 +36,6 @@ const useTrie = (): ReturnType => {
     useState<RemoveHighlightTrieFunctionType>(null)
 
   useEffect(() => {
-    if (!ref?.current) return
     setInsert(() => (word: string) => ref?.current?.insert(word))
     setRemove(() => (word: string) => ref?.current?.remove(word))
     setSearch(() => (word: string) => ref?.current?.search(word))
