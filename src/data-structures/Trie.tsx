@@ -98,11 +98,7 @@ class Trie {
     }
     node.isEnd = false
 
-    if (
-      Object.keys(node.children).length === 0
-      // TODO: test without condition below
-      // node.children.constructor === Object
-    ) {
+    if (Object.keys(node.children).length === 0) {
       node = node.parent
       for (let i = word.length - 1; i >= 0; i--) {
         if (node === this.root) {

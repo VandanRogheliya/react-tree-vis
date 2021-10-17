@@ -97,4 +97,3 @@ const compareTrie = (previousPros: TrieProps, newProps: TrieProps) =>
   compareArray(previousPros.data, newProps.data)
 
 export default React.memo(forwardRef(Trie), compareTrie)
-// export default forwardRef(Trie)
