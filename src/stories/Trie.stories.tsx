@@ -25,8 +25,9 @@ export const AllFunctions: Story = ({ ...args }) => {
   const [removeValue, setRemoveValue] = useState('')
   const [searchValue, setSearchValue] = useState('')
   const [searchPrefixValue, setSearchPrefixValue] = useState('')
-  const [found, setFound] =
-    useState<'Yes' | 'No' | 'Not searched'>('Not searched')
+  const [found, setFound] = useState<'Yes' | 'No' | 'Not searched'>(
+    'Not searched',
+  )
   const [randomValue, setRandomValue] = useState(0)
   const [data, setData] = useState([])
 
