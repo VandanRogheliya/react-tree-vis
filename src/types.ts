@@ -28,6 +28,9 @@ export type TreeStylesType = {
   nodeFontColor?: string
   nodeShadow?: string
   nodeTextShadow?: string
+  nodeFontSize?: string
+  nodeFontFamily?: string
+  nodeAvlHeightFontSize?: string
   nodeHighlightBorder?: string
   nodeHighlightBackgroundColor?: string
   nodeHighlightFontColor?: string
@@ -81,4 +84,14 @@ export type TrieRefType = {
   getAllWords: GetAllWordsFunctionTrieType
   generateRandomTrie: GenerateRandomTrieFunctionType
   removeHighlight: RemoveHighlightTrieFunctionType
+}
+
+export type AVLTreeRefType = {
+  insert: InsertFunctionType
+  remove: RemoveFunctionType
+  search: SearchFunctionType
+  getData: GetDataFunctionType
+  clear: ClearFunctionType
+  generateRandomTree: GenerateRandomTreeFunctionType
+  checkTreeType: CheckTreeTypeFunctionType
 }
