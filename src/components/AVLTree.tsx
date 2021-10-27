@@ -11,16 +11,13 @@ import {
 } from '../types'
 import { compareArray } from '../util'
 
-type BSTProps = {
+type AVLTreeProps = {
   data?: number[]
   treeStyles?: TreeStylesType
 }
 
-const BinarySearchTree: React.ForwardRefRenderFunction<
-  AVLTreeRefType,
-  BSTProps
-> = (
-  { data, treeStyles }: BSTProps,
+const AVLTree: React.ForwardRefRenderFunction<AVLTreeRefType, AVLTreeProps> = (
+  { data, treeStyles }: AVLTreeProps,
   ref: React.MutableRefObject<AVLTreeRefType>,
 ) => {
   const { tree, treeJSX, setTree } = useTreeState<AVL>(null)
@@ -89,9 +86,9 @@ const BinarySearchTree: React.ForwardRefRenderFunction<
 }
 
 // returns true if data has changed
-const compareAVLTree = (previousPros: BSTProps, newProps: BSTProps) =>
+const compareAVLTree = (previousPros: AVLTreeProps, newProps: AVLTreeProps) =>
   previousPros.data &&
   newProps.data &&
   compareArray(previousPros.data, newProps.data)
 
-export default React.memo(forwardRef(BinarySearchTree), compareAVLTree)
+export default React.memo(forwardRef(AVLTree), compareAVLTree)
