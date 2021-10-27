@@ -48,6 +48,18 @@ export const CSS_VARIABLE_MAP = {
     variableName: '--node-text-shadow',
     defaultValue: 'none',
   },
+  nodeFontSize: {
+    variableName: '--node-font-size',
+    defaultValue: '20px',
+  },
+  nodeFontFamily: {
+    variableName: '--node-font-family',
+    defaultValue: 'arial, verdana, tahoma',
+  },
+  nodeAvlHeightFontSize: {
+    variableName: '--node-avl-height-font-size',
+    defaultValue: '13px',
+  },
   nodeHighlightBorder: {
     variableName: '--node-hl-border',
     defaultValue: 'none',

@@ -9,6 +9,11 @@
   --node-font-color: #666;
   --node-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
   --node-text-shadow: none;
+  /* FIXME: Undocumented */
+  --node-font-size: 20px;
+  --node-font-family: arial, verdana, tahoma;
+  --node-avl-height-font-size: 13px;
+  /* FIXME: Undocumented over */
 
   /* highlighted node */
   --node-hl-border: none;
@@ -18,7 +23,7 @@
   --node-hl-text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ff15,
     0 0 20px #00ff15, 0 0 25px #00ff15, 0 0 30px #00ff15, 0 0 35px #00ff15;
 
-    --node-hover-border: none;
+  --node-hover-border: none;
   --node-hover-bg-color: #fff;
   --node-hover-font-color: #002574;
   --node-hover-shadow: -1px -1px 5px #fff, 1px 1px 5px #babecc;
@@ -109,8 +114,8 @@
   padding: 6px 12px;
   text-decoration: none;
   color: var(--node-font-color);
-  font-family: arial, verdana, tahoma;
-  font-size: 20px;
+  font-family: var(--node-font-family);
+  font-size: var(--node-font-size);
   display: inline-block;
   box-shadow: var(--node-shadow);
   text-shadow: var(--node-text-shadow);
@@ -179,5 +184,5 @@
 }
 
 #react-tree-vis .height {
-  font-size: 13px;
+  font-size: var(--node-avl-height-font-size);
 }
