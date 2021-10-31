@@ -60,6 +60,14 @@ export const CSS_VARIABLE_MAP = {
     variableName: '--node-avl-height-font-size',
     defaultValue: '13px',
   },
+  nodeRedBackgroundColor: {
+    variableName: '--node-red-bg-color',
+    defaultValue: '#da606066',
+  },
+  nodeBlackBackgroundColor: {
+    variableName: '--node-black-bg-color',
+    defaultValue: '#acacac66',
+  },
   nodeHighlightBorder: {
     variableName: '--node-hl-border',
     defaultValue: 'none',

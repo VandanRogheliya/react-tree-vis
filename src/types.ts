@@ -30,6 +30,8 @@ export type TreeStylesType = {
   nodeTextShadow?: string
   nodeFontSize?: string
   nodeFontFamily?: string
+  nodeRedBackgroundColor?: string
+  nodeBlackBackgroundColor?: string
   nodeAvlHeightFontSize?: string
   nodeHighlightBorder?: string
   nodeHighlightBackgroundColor?: string
@@ -86,7 +88,7 @@ export type TrieRefType = {
   removeHighlight: RemoveHighlightTrieFunctionType
 }
 
-export type AVLTreeRefType = {
+export type SelfBalancingTreeRefType = {
   insert: InsertFunctionType
   remove: RemoveFunctionType
   search: SearchFunctionType
