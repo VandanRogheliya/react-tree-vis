@@ -1,36 +1,36 @@
-import React, { forwardRef, useEffect, useImperativeHandle } from 'react'
-import { TREE_ID } from '../constants'
-import AVL from '../data-structures/AVLTree'
 import useTreeState from '../hooks/useTreeState'
-import useTreeStyle from '../hooks/useTreeStyle'
 import {
-  SelfBalancingTreeRefType,
   BinaryTreeCheckType,
+  SelfBalancingTreeRefType,
   TraversalOrderType,
   TreeStylesType,
 } from '../types'
+import RBTree from '../data-structures/RedBlackTree'
+import useTreeStyle from '../hooks/useTreeStyle'
+import React, { forwardRef, useEffect, useImperativeHandle } from 'react'
+import { TREE_ID } from '../constants'
 import { compareArray } from '../util'
 
-type AVLTreeProps = {
+type RedBlackTreeProps = {
   data?: number[]
   treeStyles?: TreeStylesType
 }
 
-const AVLTree: React.ForwardRefRenderFunction<
+const RedBlackTree: React.ForwardRefRenderFunction<
   SelfBalancingTreeRefType,
-  AVLTreeProps
+  RedBlackTreeProps
 > = (
-  { data, treeStyles }: AVLTreeProps,
+  { data, treeStyles }: RedBlackTreeProps,
   ref: React.MutableRefObject<SelfBalancingTreeRefType>,
 ) => {
-  const { tree, treeJSX, setTree } = useTreeState<AVL>(null)
+  const { tree, treeJSX, setTree } = useTreeState<RBTree>(null)
   useTreeStyle(treeStyles)
 
   useImperativeHandle(ref, () => ({
     insert: (value: number) => {
       // if tree is empty
       if (!tree?.root) {
-        const newTree = new AVL()
+        const newTree = new RBTree()
         newTree.insert(value)
         setTree(newTree)
         return
@@ -59,19 +59,19 @@ const AVLTree: React.ForwardRefRenderFunction<
       return traversalData
     },
     clear: () => {
-      setTree(new AVL())
+      setTree(new RBTree())
     },
     generateRandomTree: (countOfNodes: number) => {
-      const newTree = new AVL(countOfNodes)
+      const newTree = new RBTree(countOfNodes)
       setTree(newTree)
     },
     checkTreeType: (): BinaryTreeCheckType[] => {
-      return tree.checkAVL()
+      return tree.checkBinaryTree()
     },
   }))
 
   const handleData = () => {
-    const newTree = new AVL()
+    const newTree = new RBTree()
     data.forEach((elem) => newTree.insert(elem))
     setTree(newTree)
   }
@@ -89,9 +89,12 @@ const AVLTree: React.ForwardRefRenderFunction<
 }
 
 // returns true if data has changed
-const compareAVLTree = (previousPros: AVLTreeProps, newProps: AVLTreeProps) =>
+const compareRedBlackTree = (
+  previousPros: RedBlackTreeProps,
+  newProps: RedBlackTreeProps,
+) =>
   previousPros.data &&
   newProps.data &&
   compareArray(previousPros.data, newProps.data)
 
-export default React.memo(forwardRef(AVLTree), compareAVLTree)
+export default React.memo(forwardRef(RedBlackTree), compareRedBlackTree)

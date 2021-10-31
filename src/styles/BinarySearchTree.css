@@ -13,6 +13,8 @@
   --node-font-size: 20px;
   --node-font-family: arial, verdana, tahoma;
   --node-avl-height-font-size: 13px;
+  --node-red-bg-color: #da6060;
+  --node-black-bg-color: #acacac;
   /* FIXME: Undocumented over */
 
   /* highlighted node */
@@ -130,13 +132,11 @@
 }
 
 #react-tree-vis li div.red {
-  background-color: rgba(218, 96, 96, 0.5);
-  text-shadow: none;
+  background-color: var(--node-red-bg-color);
 }
 
 #react-tree-vis li div.black {
-  background-color: rgba(172, 172, 172, 0.5);
-  text-shadow: none;
+  background-color: var(--node-black-bg-color);
 }
 
 #react-tree-vis li div.highlight {
@@ -145,18 +145,6 @@
   box-shadow: var(--node-hl-shadow);
   color: var(--node-hl-font-color);
   text-shadow: var(--node-hl-text-shadow);
-}
-
-#react-tree-vis li div.highlight.red {
-  color: #fff;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f00, 0 0 20px #f00,
-    0 0 25px #f00, 0 0 30px #f00, 0 0 35px #f00;
-}
-
-#react-tree-vis li div.highlight.black {
-  color: #fff;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #000, 0 0 20px #000,
-    0 0 25px #000, 0 0 30px #000, 0 0 35px #000;
 }
 
 /* Hover Styles starts */

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import {
-  AVLTreeRefType,
+  SelfBalancingTreeRefType,
   CheckTreeTypeFunctionType,
   ClearFunctionType,
   GenerateRandomTreeFunctionType,
@@ -12,7 +12,7 @@ import {
 } from '../types'
 
 type UseTreeReturnType = {
-  ref: React.MutableRefObject<AVLTreeRefType>
+  ref: React.MutableRefObject<SelfBalancingTreeRefType>
   insert: InsertFunctionType
   remove: RemoveFunctionType
   search: SearchFunctionType
@@ -22,8 +22,8 @@ type UseTreeReturnType = {
   checkTreeType: CheckTreeTypeFunctionType
 }
 
-const useBinarySearchTree = (): UseTreeReturnType => {
-  const ref = useRef<AVLTreeRefType>(null)
+const useSelfBalancingTree = (): UseTreeReturnType => {
+  const ref = useRef<SelfBalancingTreeRefType>(null)
   const [insertFunction, setInsertFunction] = useState<InsertFunctionType>(null)
   const [removeFunction, setRemoveFunction] = useState<RemoveFunctionType>(null)
   const [searchFunction, setSearchFunction] = useState<SearchFunctionType>(null)
@@ -63,4 +63,4 @@ const useBinarySearchTree = (): UseTreeReturnType => {
   }
 }
 
-export default useBinarySearchTree
+export default useSelfBalancingTree
