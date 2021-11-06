@@ -34,7 +34,7 @@ class Heap {
 
   //Extracts the top value
   removeTop() {
-    if (this.isEmpty()) return -111111
+    if (this.isEmpty()) return null
     const poppedTopElement = this.heap[0]
     this.heap[0] = this.heap[--this.end]
     this.heapifyDown()
