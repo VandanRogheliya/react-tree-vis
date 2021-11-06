@@ -16,7 +16,10 @@ function useTreeState<TreeType = BST>(
   )
   const setTree = (newTreeObject: TreeType) => {
     setTreeInternal(newTreeObject)
-    setTreeJSX((newTreeObject as any)?.root?.currentJSX)
+    setTreeJSX(
+      (newTreeObject as any)?.root?.currentJSX ||
+        (newTreeObject as any)?.currentJSX,
+    )
   }
   return { tree, treeJSX, setTree }
 }

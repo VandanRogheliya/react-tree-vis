@@ -58,6 +58,7 @@ export type ClearFunctionType = () => void
 export type BalanceFunctionType = () => void
 export type GenerateRandomTreeFunctionType = (countOfNodes: number) => void
 export type CheckTreeTypeFunctionType = () => BinaryTreeCheckType[]
+export type GetHeapDataFunctionType = () => number[]
 
 export type BinaryTreeRefType = {
   insert: InsertFunctionType
@@ -77,6 +78,7 @@ export type SearchPrefixFunctionTrieType = (word: string) => boolean
 export type GetAllWordsFunctionTrieType = () => string[]
 export type GenerateRandomTrieFunctionType = (num: number) => void
 export type RemoveHighlightTrieFunctionType = () => void
+export type ExtractTopFunctionType = () => number
 
 export type TrieRefType = {
   insert: InsertFunctionTrieType
@@ -96,4 +98,13 @@ export type SelfBalancingTreeRefType = {
   clear: ClearFunctionType
   generateRandomTree: GenerateRandomTreeFunctionType
   checkTreeType: CheckTreeTypeFunctionType
+}
+
+export type HeapRefType = {
+  insert: InsertFunctionType
+  remove: RemoveFunctionType
+  generateRandomTree: GenerateRandomTreeFunctionType
+  clear: ClearFunctionType
+  extractTop: ExtractTopFunctionType
+  getData: GetHeapDataFunctionType
 }
