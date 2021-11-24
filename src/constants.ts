@@ -1,3 +1,5 @@
+import { TableDataType } from './types'
+
 export const INORDER_KEY = 'inorder'
 export const POSTORDER_KEY = 'postorder'
 export const PREORDER_KEY = 'preorder'
@@ -15,110 +17,204 @@ export const CSS_VARIABLE_MAP = {
   lineColor: {
     variableName: '--line-color',
     defaultValue: '#ccc',
+    description: 'Color of the line connecting nodes',
   },
   lineHoverColor: {
     variableName: '--line-hover-color',
     defaultValue: '#5f6674',
+    description: 'Hover color of the line connecting nodes',
   },
   lineRadius: {
     variableName: '--line-radius',
     defaultValue: '5px',
+    description: 'Radius of curves in the line',
   },
   nodeBorder: {
     variableName: '--node-border',
     defaultValue: 'none',
+    description:
+      'Border style of the nodes. Syntax of short-hand CSS border property is accepted here.',
   },
   nodeBorderRadius: {
     variableName: '--node-border-radius',
     defaultValue: '200px',
+    description: '',
   },
   nodeBackgroundColor: {
     variableName: '--node-bg-color',
     defaultValue: '#fff',
+    description: '',
   },
   nodeFontColor: {
     variableName: '--node-font-color',
     defaultValue: '#666',
+    description: '',
   },
   nodeShadow: {
     variableName: '--node-shadow',
     defaultValue: '-5px -5px 20px #fff, 5px 5px 20px #babecc',
+    description: 'Syntax of short-hand CSS shadow property accepted here.',
   },
   nodeTextShadow: {
     variableName: '--node-text-shadow',
     defaultValue: 'none',
+    description: 'Syntax of short-hand CSS shadow property accepted here.',
   },
   nodeFontSize: {
     variableName: '--node-font-size',
     defaultValue: '20px',
+    description: '',
   },
   nodeFontFamily: {
     variableName: '--node-font-family',
     defaultValue: 'arial, verdana, tahoma',
+    description: '',
   },
   nodeAvlHeightFontSize: {
     variableName: '--node-avl-height-font-size',
     defaultValue: '13px',
+    description: '',
   },
   nodeRedBackgroundColor: {
     variableName: '--node-red-bg-color',
     defaultValue: '#da606066',
+    description: '',
   },
   nodeBlackBackgroundColor: {
     variableName: '--node-black-bg-color',
     defaultValue: '#acacac66',
+    description: '',
   },
   nodeHighlightBorder: {
     variableName: '--node-hl-border',
     defaultValue: 'none',
+    description: 'Syntax of short-hand CSS border property is accepted here.',
   },
   nodeHighlightBackgroundColor: {
     variableName: '--node-hl-bg-color',
     defaultValue: '#fff',
+    description: '',
   },
   nodeHighlightFontColor: {
     variableName: '--node-hl-font-color',
     defaultValue: '#fff',
+    description: '',
   },
   nodeHighlightShadow: {
     variableName: '--node-hl-shadow',
     defaultValue: '-5px -5px 20px #fff, 5px 5px 20px #babecc',
+    description: 'Syntax of short-hand CSS shadow property accepted here.',
   },
   nodeHighlightTextShadow: {
     variableName: '--node-hl-text-shadow',
     defaultValue:
       '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ff15, 0 0 20px #00ff15, 0 0 25px #00ff15, 0 0 30px #00ff15, 0 0 35px #00ff15',
+    description: 'Syntax of short-hand CSS shadow property accepted here.',
   },
   nodeHoverBorder: {
     variableName: '--node-hover-border',
     defaultValue: 'none',
+    description: 'Syntax of short-hand CSS border property is accepted here.',
   },
   nodeHoverBackgroundColor: {
     variableName: '--node-hover-bg-color',
     defaultValue: '#fff',
+    description: '',
   },
   nodeHoverFontColor: {
     variableName: '--node-hover-font-color',
     defaultValue: '#002574',
+    description: '',
   },
   nodeHoverShadow: {
     variableName: '--node-hover-shadow',
     defaultValue: '-1px -1px 5px #fff, 1px 1px 5px #babecc',
+    description: 'Syntax of short-hand CSS shadow property accepted here.',
   },
   nodeHoverTextShadow: {
     variableName: '--node-hover-text-shadow',
     defaultValue: 'none',
+    description: 'Syntax of short-hand CSS shadow property accepted here.',
   },
   nodeNullFontColor: {
     variableName: '--node-null-font-color',
     defaultValue: '#7c7c7c2f',
+    description: '',
   },
   nodeNullHoverFontColor: {
     variableName: '--node-null-hover-font-color',
     defaultValue: '#ff0000b9',
+    description: '',
   },
   transitionDuration: {
     variableName: '--transition',
     defaultValue: '0.5s',
+    description: '',
   },
+}
+
+export const AVL_TREE_PROPS: TableDataType = {
+  head: ['Prop', 'Type', 'Required', 'Description'],
+  body: [
+    [
+      '<code>ref</code>',
+      '<code>React.MutableRefObject&lt;any&gt;</code>',
+      '❌',
+      'Allows interaction with AVLTree component. <code>ref</code> object passed, is obtained from <code>useAVLTree()</code>.',
+    ],
+    [
+      '<code>data</code>',
+      '<code>number[]</code>',
+      '❌',
+      'Elements in the array are inserted into the tree on mount.',
+    ],
+    [
+      '<code>treeStyles</code>',
+      '<code>object</code>',
+      '❌',
+      'Allows overriding default style of the component. Checkout treeStyles object story under STYLES for more info.',
+    ],
+  ],
+}
+
+export const AVL_HOOK_PROPERTIES: TableDataType = {
+  head: ['Property', 'Type', 'Description'],
+  body: [
+    [
+      '<code>ref</code>',
+      '<code>React.MutableRefObject&lt;any&gt;</code>',
+      'Pass this ref object to your tree component. It binds the functions returned by this hook to that component.',
+    ],
+    [
+      '<code>insert</code>',
+      '<code>(value: number) => void</code>',
+      'Inserts the value',
+    ],
+    [
+      '<code>remove</code>',
+      '<code>(value: number) => boolean</code>',
+      'removes the value',
+    ],
+    [
+      '<code>search</code>',
+      '<code>(value: number) => boolean</code>',
+      'Searches the value and return true if found. Also, node found is highlighted',
+    ],
+    [
+      '<code>getData</code>',
+      '<code>(traversalOrder: TraversalOrderType) => number[]</code>',
+      'Returns traversal of the tree',
+    ],
+    ['<code>clear</code>', '<code>() => void</code>', 'Removes all nodes '],
+    [
+      '<code>generateRandomTree</code>',
+      '<code>(countOfNodes: number) => void</code>',
+      'Removes all nodes and inserts countOfNodes random values.',
+    ],
+    [
+      '<code>checkTreeType</code>',
+      '<code>() => BinaryTreeCheckType[]</code>',
+      'Checks whether the current tree is balanced, complete, perfect or full',
+    ],
+  ],
 }

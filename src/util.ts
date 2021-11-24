@@ -1,4 +1,5 @@
 import { CSS_VARIABLE_MAP } from './constants'
+import { TableDataType } from './types'
 
 export const compareArray = (array1: any[], array2: any[]): boolean => {
   if (array1.length !== array2.length) return false
@@ -19,4 +20,18 @@ export const handleStyleArgTypes = () => {
     }
   }
   return argTypes
+}
+
+export const getTreeStylesInTableDataFormat = () => {
+  const data: TableDataType = { head: [], body: [] }
+  data.head = ['Property', 'Type', 'Description', 'Default']
+  data.body = Object.entries(CSS_VARIABLE_MAP).map(
+    ([key, { description, defaultValue }]) => [
+      `<code>${key}</code>`,
+      '<code>string</code>',
+      description,
+      `<code>${defaultValue}</code>`,
+    ],
+  )
+  return data
 }

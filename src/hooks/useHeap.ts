@@ -19,7 +19,7 @@ type UseTreeReturnType = {
   extractTop: ExtractTopFunctionType
 }
 
-const useBinarySearchTree = (): UseTreeReturnType => {
+const useHeap = (): UseTreeReturnType => {
   const ref = useRef<HeapRefType>(null)
   const [insertFunction, setInsertFunction] = useState<InsertFunctionType>(null)
   const [removeFunction, setRemoveFunction] = useState<RemoveFunctionType>(null)
@@ -54,4 +54,4 @@ const useBinarySearchTree = (): UseTreeReturnType => {
   }
 }
 
-export default useBinarySearchTree
+export default useHeap

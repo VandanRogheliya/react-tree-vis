@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs'
+import Table from './docs/components/Table'
+import { getTreeStylesInTableDataFormat } from '../util'
+
+<Meta title="Styles/treeStyles object" />
+
+# Tree Styles
+
+An object with properties described below can be passed to `treeStyles` prop to override default styles.
+
+<Table data={getTreeStylesInTableDataFormat()} />
+
+##### \* Nodes searched successfully in the tree are highlighted.
+
+All tree stories allow you to play around with styles! (Refresh to apply styles. Working on improving UX here. Here is a rabbit for inconvenience caused. 🐰)
+
+Feel styling options are limited? You can always override them with CSS. All the tree components are given id `react-tree-vis`. Refer to [this CSS file](https://github.com/VandanRogheliya/react-tree-vis/blob/master/src/styles/BinarySearchTree.css) for selectors. Also check out [this codesandbox example](https://codesandbox.io/s/overriding-css-mwp9b?file=/src/styles.css).

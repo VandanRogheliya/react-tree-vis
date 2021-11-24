@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { Meta, Story } from '@storybook/react'
 import { AVLTree, useAVLTree } from '../index'
 import { handleStyleArgTypes } from '../util'
+import AVLTreeDoc from './docs/AVLTreeDoc.mdx'
 
 export default {
   title: 'Tree/AVL Tree',
   component: AVLTree,
   argTypes: handleStyleArgTypes(),
+  parameters: { docs: { page: AVLTreeDoc } },
 } as Meta
 
 export const SimpleExample: Story = ({ ...args }) => {
