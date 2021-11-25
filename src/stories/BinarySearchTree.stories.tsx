@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { Meta, Story } from '@storybook/react'
 import { BinarySearchTree, useBinarySearchTree } from '../index'
 import { handleStyleArgTypes } from '../util'
+import BinarySearchTreeDoc from './docs/BinarySearchTreeDoc.mdx'
 
 export default {
   title: 'Tree/Binary Search Tree',
   component: BinarySearchTree,
   argTypes: handleStyleArgTypes(),
+  parameters: { docs: { page: BinarySearchTreeDoc } },
 } as Meta
 
 export const SimpleExample: Story = ({ ...args }) => {
