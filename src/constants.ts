@@ -225,6 +225,30 @@ export const BINARY_SEARCH_TREE_PROPS: TableDataType = {
   ],
 }
 
+export const HEAP_PROPS: TableDataType = {
+  head: ['Prop', 'Type', 'Required', 'Description'],
+  body: [
+    [
+      '<code>ref</code>',
+      '<code>React.MutableRefObject&lt;any&gt;</code>',
+      '❌',
+      'Allows interaction with Heap component. <code>ref</code> object passed, is obtained from <code>useHeap()</code>.',
+    ],
+    [
+      '<code>data</code>',
+      '<code>number[]</code>',
+      '❌',
+      'Elements in the array are inserted into the tree on mount.',
+    ],
+    [
+      '<code>treeStyles</code>',
+      '<code>object</code>',
+      '❌',
+      'Allows overriding default style of the component. Checkout treeStyles object story under STYLES for more info.',
+    ],
+  ],
+}
+
 export const AVL_HOOK_PROPERTIES: TableDataType = {
   head: ['Property', 'Type', 'Description'],
   body: [
@@ -306,6 +330,43 @@ export const BINARY_SEARCH_TREE_HOOK_PROPERTIES: TableDataType = {
       '<code>checkTreeType</code>',
       '<code>() => BinaryTreeCheckType[]</code>',
       'Checks whether the current tree is balanced, complete, perfect or full',
+    ],
+  ],
+}
+
+export const HEAP_HOOK_PROPERTIES: TableDataType = {
+  head: ['Property', 'Type', 'Description'],
+  body: [
+    [
+      '<code>ref</code>',
+      '<code>React.MutableRefObject&lt;any&gt;</code>',
+      'Pass this ref object to your tree component. It binds the functions returned by this hook to that component.',
+    ],
+    [
+      '<code>insert</code>',
+      '<code>(value: number) => void</code>',
+      'Inserts the value',
+    ],
+    [
+      '<code>remove</code>',
+      '<code>(value: number) => boolean</code>',
+      'removes the value',
+    ],
+    [
+      '<code>getData</code>',
+      '<code>() => number[]</code>',
+      'Returns internal array used to create heap',
+    ],
+    ['<code>clear</code>', '<code>() => void</code>', 'Removes all nodes '],
+    [
+      '<code>generateRandomTree</code>',
+      '<code>(countOfNodes: number) => void</code>',
+      'Removes all nodes and inserts countOfNodes random values.',
+    ],
+    [
+      '<code>extractTop</code>',
+      '<code>() => number</code>',
+      'Extracts the top most value from the heap and returns it',
     ],
   ],
 }

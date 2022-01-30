@@ -3,11 +3,13 @@ import { Meta, Story } from '@storybook/react'
 import { MinHeap, useHeap } from '..'
 import { handleStyleArgTypes } from '../util'
 import { useState } from '@storybook/addons'
+import MinHeapDoc from './docs/MinHeapDoc.mdx'
 
 export default {
   title: 'Tree/Min Heap',
   component: MinHeap,
   argTypes: handleStyleArgTypes(),
+  parameters: { docs: { page: MinHeapDoc } },
 } as Meta
 
 export const AllFunctions: Story = ({ ...args }) => {
