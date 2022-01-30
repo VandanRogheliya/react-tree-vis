@@ -2,11 +2,13 @@ import { Meta, Story } from '@storybook/react'
 import React, { useState } from 'react'
 import { RedBlackTree, useRedBlackTree } from '..'
 import { handleStyleArgTypes } from '../util'
+import RedBlackTreeDoc from './docs/RedBlackTreeDoc.mdx'
 
 export default {
   title: 'Tree/Red Black Tree',
   component: RedBlackTree,
   argTypes: handleStyleArgTypes(),
+  parameters: { docs: { page: RedBlackTreeDoc } },
 } as Meta
 
 export const SimpleExample: Story = ({ ...args }) => {

@@ -3,11 +3,13 @@ import { Meta, Story } from '@storybook/react'
 import { MaxHeap, useHeap } from '..'
 import { handleStyleArgTypes } from '../util'
 import { useState } from '@storybook/addons'
+import MaxHeapDoc from './docs/MaxHeapDoc.mdx'
 
 export default {
   title: 'Tree/Max Heap',
   component: MaxHeap,
   argTypes: handleStyleArgTypes(),
+  parameters: { docs: { page: MaxHeapDoc } },
 } as Meta
 
 export const AllFunctions: Story = ({ ...args }) => {

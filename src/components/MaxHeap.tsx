@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useImperativeHandle } from 'react'
 import { TREE_ID } from '../constants'
-import { MaxHeap as MaxHeapDataStructure } from '../data-structures/heap'
+import { MaxHeap as MaxHeapDataStructure } from '../data-structures/Heap'
 import useTreeState from '../hooks/useTreeState'
 import useTreeStyle from '../hooks/useTreeStyle'
 import { HeapRefType, TreeStylesType } from '../types'
