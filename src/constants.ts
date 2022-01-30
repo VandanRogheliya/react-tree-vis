@@ -249,6 +249,30 @@ export const HEAP_PROPS: TableDataType = {
   ],
 }
 
+export const TRIE_PROPS: TableDataType = {
+  head: ['Prop', 'Type', 'Required', 'Description'],
+  body: [
+    [
+      '<code>ref</code>',
+      '<code>React.MutableRefObject&lt;any&gt;</code>',
+      '❌',
+      'Allows interaction with Trie component. <code>ref</code> object passed, is obtained from <code>useTrie()</code>.',
+    ],
+    [
+      '<code>data</code>',
+      '<code>string[]</code>',
+      '❌',
+      'Elements in the array are inserted into the trie on mount.',
+    ],
+    [
+      '<code>treeStyles</code>',
+      '<code>object</code>',
+      '❌',
+      'Allows overriding default style of the component. Checkout treeStyles object story under STYLES for more info.',
+    ],
+  ],
+}
+
 export const AVL_HOOK_PROPERTIES: TableDataType = {
   head: ['Property', 'Type', 'Description'],
   body: [
@@ -270,7 +294,7 @@ export const AVL_HOOK_PROPERTIES: TableDataType = {
     [
       '<code>search</code>',
       '<code>(value: number) => boolean</code>',
-      'Searches the value and return true if found. Also, node found is highlighted',
+      'Searches the value and returns true if found. Also, node found is highlighted',
     ],
     [
       '<code>getData</code>',
@@ -312,7 +336,7 @@ export const BINARY_SEARCH_TREE_HOOK_PROPERTIES: TableDataType = {
     [
       '<code>search</code>',
       '<code>(value: number) => boolean</code>',
-      'Searches the value and return true if found. Also, node found is highlighted',
+      'Searches the value and returns true if found. Also, node found is highlighted',
     ],
     [
       '<code>getData</code>',
@@ -367,6 +391,52 @@ export const HEAP_HOOK_PROPERTIES: TableDataType = {
       '<code>extractTop</code>',
       '<code>() => number</code>',
       'Extracts the top most value from the heap and returns it',
+    ],
+  ],
+}
+
+export const TRIE_HOOK_PROPERTIES: TableDataType = {
+  head: ['Property', 'Type', 'Description'],
+  body: [
+    [
+      '<code>ref</code>',
+      '<code>React.MutableRefObject&lt;any&gt;</code>',
+      'Pass this ref object to your Trie component. It binds the functions returned by this hook to that component.',
+    ],
+    [
+      '<code>insert</code>',
+      '<code>(word: string) => void</code>',
+      'Inserts the word',
+    ],
+    [
+      '<code>remove</code>',
+      '<code>(word: string) => boolean</code>',
+      'removes the word',
+    ],
+    [
+      '<code>search</code>',
+      '<code>(word: string) => boolean</code>',
+      'Searches the word and returns true if found. Also, the nodes are highlighted.',
+    ],
+    [
+      '<code>searchPrefix</code>',
+      '<code>(word: string) => boolean</code>',
+      'Searches the prefix and return true if full prefix is present. Also, the nodes are highlighted.',
+    ],
+    [
+      '<code>getAllWords</code>',
+      '<code>() => string[]</code>',
+      'Returns an array of all the words in trie',
+    ],
+    [
+      '<code>generateRandomTrie</code>',
+      '<code>(countOfWords: number) => void</code>',
+      'Removes all nodes and inserts countOfNodes random words.',
+    ],
+    [
+      '<code>removeHighlight</code>',
+      '<code>() => void</code>',
+      'Removes highlight from all the nodes, if any',
     ],
   ],
 }

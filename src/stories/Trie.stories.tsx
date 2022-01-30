@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Meta, Story } from '@storybook/react'
 import { Trie, useTrie } from '../index'
 import { handleStyleArgTypes } from '../util'
+import TrieDoc from './docs/TrieDoc.mdx'
 
 export default {
   title: 'Tree/Trie',
   component: Trie,
   argTypes: handleStyleArgTypes(),
+  parameters: { docs: { page: TrieDoc } },
 } as Meta
 
 export const AllFunctions: Story = ({ ...args }) => {

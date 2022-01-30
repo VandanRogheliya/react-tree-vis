@@ -1,0 +1,41 @@
+import Table from './components/Table'
+import { TRIE_PROPS, TRIE_HOOK_PROPERTIES } from '../../constants'
+
+# Trie
+
+It organizes words in a trie and exposes various styling options.
+
+## Example
+
+```js
+const Component = () => {
+  const { ref, insert } = useTrie()
+
+  const [insertValue, setInsertValue] = useState('')
+
+  return (
+    <>
+      <div>
+        <input
+          type="text"
+          onChange={(elem) => setInsertValue(elem.currentTarget.value)}
+        />
+        <button onClick={() => insert(insertValue)}>Insert</button>
+      </div>
+      <Trie ref={ref} data={['cook', 'cold', 'cap', 'cooker', 'cool']} />
+    </>
+  )
+}
+```
+
+## Props
+
+<Table data={TRIE_PROPS} />
+
+## useTrie
+
+This hook allows you to interact with your trie. Insert, remove, search and so much more!
+
+It returns an object with the following properties.
+
+<Table data={TRIE_HOOK_PROPERTIES} />
