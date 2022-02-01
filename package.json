@@ -1,6 +1,6 @@
 {
   "name": "react-tree-vis",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "description": "React interactive tree visualization library.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
