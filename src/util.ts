@@ -9,7 +9,7 @@ export const compareArray = (array1: any[], array2: any[]): boolean => {
   return true
 }
 
-export const handleStyleArgTypes = () => {
+export const handleStyleArgTypes = (): Record<string, any> => {
   const argTypes = {}
   for (const [style, { defaultValue }] of Object.entries(CSS_VARIABLE_MAP)) {
     argTypes[style] = {
